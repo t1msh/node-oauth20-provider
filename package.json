@@ -1,5 +1,5 @@
 {
-    "name": "node-oauth2-provider",
+    "name": "oauth20-provider",
     "version": "0.1.0",
     "description": "OAuth 2.0 provider toolkit for nodeJS",
     "keywords": ["oauth", "oauth2", "provider", "server", "connect", "express", "middleware", "http", "api", "rest"],
