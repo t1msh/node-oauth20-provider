@@ -20,16 +20,16 @@
     } ],
     "main": "./lib",
     "dependencies": {
-        "async": "0.1.x"
+        "async": "*"
     },
     "devDependencies": {
-        "mocha": "1.7.x",
-        "express": "3.0.x",
-        "supertest": "0.5.x",
-        "jade": "0.27.x"
+        "mocha": "*",
+        "express": "*",
+        "supertest": "*",
+        "jade": "*"
     },
     "scripts": {
         "test": "node_modules/.bin/mocha --reporter spec"
     },
-    "engines": { "node": ">= 0.8.0" }
+    "engines": { "node": ">= 0.10.0" }
 }
