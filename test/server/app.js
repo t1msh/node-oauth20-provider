@@ -8,7 +8,8 @@ var
 var server = express();
 server.use(express.cookieParser());
 server.use(express.session({secret: 'oauth2-test-server'}));
-server.use(express.bodyParser({mapParams: false}));
+server.use(express.urlencoded());
+server.use(express.json());
 server.use(oauth2.inject());
 server.set('views', './views');
 server.set('view engine', 'jade');
