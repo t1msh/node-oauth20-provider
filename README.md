@@ -10,7 +10,7 @@ ___Why should i use this library?___
 
 ## Installation ##
 
-    $ npm install oauth2-provider
+    $ npm install oauth20-provider
 
 ---------------------------------------
 
@@ -170,19 +170,17 @@ Your authorizaton server is ready for work.
 
 ### ToDo list and future plans ###
 
-- More docs
-- Build example site available from web
-- More tests
-- Add refresh token TTL
+- Add examples (memory, redis, mongodb, sql)
 - Allow multiple flows for single client (only 1 per client works well yet)
+- Add refresh token TTL
 - Implement proper "state" support
 - Implement proper "TTL" support for accessToken and scope objects
 - Add MAC token type
-- Add built-in redis models
-- Add built-in mongodb models
 - Allow client authentication via query parameters
-- Check RFC once more
 - More tests
+- More docs
+- Build example site
+- Check RFC once more
 
 ### License ###
 
