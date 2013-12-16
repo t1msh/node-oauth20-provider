@@ -1,4 +1,4 @@
-var users = require('./../../fixtures/data.js').users;
+var users = require('./../../data.js').users;
 
 module.exports.getId = function(user) {
     return user.id;

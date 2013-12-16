@@ -1,6 +1,6 @@
 var
     request = require('supertest'),
-    data = require('./fixtures/data.js'),
+    data = require('./server/model/data.js'),
     app = require('./server/app.js');
 
 describe('Password Grant Type ',function() {

@@ -1,4 +1,4 @@
-var clients = require('./../../fixtures/data.js').clients;
+var clients = require('./../../data.js').clients;
 
 module.exports.getId = function(client) {
     return client.id;

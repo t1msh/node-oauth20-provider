@@ -1,4 +1,4 @@
-var codes = require('./../../fixtures/data.js').codes;
+var codes = require('./../../data.js').codes;
 
 module.exports.save = function(code, userId, clientId, scope, ttl, cb) {
     var obj = {code: code, userId: userId, clientId: clientId, scope: scope, ttl: new Date().getTime() + ttl * 1000};

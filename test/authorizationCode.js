@@ -1,7 +1,7 @@
 var
     query = require('querystring'),
     request = require('supertest'),
-    data = require('./fixtures/data.js'),
+    data = require('./server/model/data.js'),
     app = require('./server/app.js');
 
 describe('Authorization Code Grant Type ',function() {

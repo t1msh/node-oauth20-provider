@@ -1,4 +1,4 @@
-var accessTokens = require('./../../fixtures/data.js').accessTokens;
+var accessTokens = require('./../../data.js').accessTokens;
 
 module.exports.getToken = function(accessToken) {
     return accessToken.token;

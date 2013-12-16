@@ -1,6 +1,6 @@
 var
     request = require('supertest'),
-    data = require('./fixtures/data.js'),
+    data = require('./server/model/data.js'),
     app = require('./server/app.js');
 
 describe('Client Credentials Grant Type ',function() {
@@ -28,9 +28,9 @@ describe('Client Credentials Grant Type ',function() {
             .expect(403, done);
     });
 
-    it('POST /public expect authorized', function(done) {
+    it('POST /client expect authorized', function(done) {
         request(app)
-            .get('/public')
+            .get('/client')
             .set('Authorization', 'Bearer ' + accessToken)
             .expect(200, done);
     });

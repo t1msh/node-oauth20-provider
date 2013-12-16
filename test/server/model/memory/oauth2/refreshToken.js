@@ -1,4 +1,4 @@
-var refreshTokens = require('./../../fixtures/data.js').refreshTokens;
+var refreshTokens = require('./../../data.js').refreshTokens;
 
 module.exports.getUserId = function(refreshToken) {
     return refreshToken.userId;
