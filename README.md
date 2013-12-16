@@ -65,6 +65,7 @@ First of all include and initialize **oauth20-provider** library:
 ```js
 oauth2lib = require('./oauth20-provider.js');
 oauth2 = new oauth2lib({log: {level: 2}});
+```
 
 Library is compatible with express/connect servers, inject oauth2 into your server.
 ```js
