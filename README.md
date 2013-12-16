@@ -1,12 +1,14 @@
-node-oauth2-provider
+node-oauth20-provider
 ==================
 
 OAuth 2.0 provider toolkit for nodeJS with connect/express support. Supports all the four authorization flows: authorization code, implicit, client credentials, password.
 
-___Why should i use this library?___
+___One more oAuth 2.0 service provider? Yes!___
 
-- Fully customizable and extremely flexible
 - Based on the final specification *[RFC6749](http://tools.ietf.org/html/rfc6749 "The OAuth 2.0 Authorization Framework Specification")*
+- Fully customizable and extremely flexible
+- Test covered
+- Contains integration examples
 
 ## Installation ##
 
@@ -16,30 +18,15 @@ ___Why should i use this library?___
 
 ## Usage ##
 
-> Look into ."/test/server/ directory" for working example with in-memory storage models.
+> Look into ."/test/server/ directory" for working example with in-memory and redis storage models.
 
 ### Step 1. Define your models ###
 
-By default module sets abstract models which should be redefined (built in redis and mongo support wiil be available soon). Here is the list of them and their common schema (one can implement it in the other way, library does not force to do it that way):
+By default module sets abstract models which should be redefined, library does not force any implementation.
 
 ### Refresh token ###
 
 Refresh tokens are credentials used to obtain access tokens.  Refresh tokens are issued to the client by the authorization server and are used to obtain a new access token when the current access token becomes invalid or expires, or to obtain additional access tokens with identical or narrower scope (access tokens may have a shorter lifetime and fewer permissions than authorized by the resource owner). *[Read more](http://tools.ietf.org/html/rfc6749#section-1.5)*
-
-___Model definition___
-
-Primary key: **token**
-Unique key: **userId** + **clientId** pair
-```js
-{
-    userId:   { type: "object", required: true },
-    clientId: { type: "object", required: true },
-    token:    { type: "string", required: true, unique: true },
-    scope:    { type: "array",  required: false,
-        items:    { type: "string", enum: ["possible", "scope", "values"] }
-    }
-}
-```
 
 ___Redefinable functions___
 Look at "./lib/model/refreshToken.js" for further information.
@@ -48,20 +35,6 @@ Look at "./lib/model/refreshToken.js" for further information.
 
 Access tokens are credentials used to access protected resources.  An access token is a string representing an authorization issued to the client.  The string is usually opaque to the client.  Tokens represent specific scopes and durations of access, granted by the resource owner, and enforced by the resource server and authorization server. *[Read more](http://tools.ietf.org/html/rfc6749#section-1.4)*
 
-___Model definition___
-
-Primary key: **token**
-```js
-{
-    userId:   { type: "object", required: true },
-    clientId: { type: "object", required: true },
-    token:    { type: "string", required: true, unique: true },
-    scope:  { type: "array", required: false,
-        items: { type: "string", enum: ["possible", "scope", "values"] },
-    }
-}
-```
-
 ___Redefinable functions___
 Look at "./lib/model/accessToken.js" for further information.
 
@@ -69,45 +42,12 @@ Look at "./lib/model/accessToken.js" for further information.
 
 Before initiating the protocol, the client registers with the authorization server.  The means through which the client registers with the authorization server are beyond the scope of this specification but typically involve end-user interaction with an HTML registration form. *[Read more](http://tools.ietf.org/html/rfc6749#section-2)*
 
-___Model definition___
-
-Primary key: **id**
-```js
-{
-    id:    { type: "object", required: true, unique: true },
-    name:   { type: "string", required: true },
-    secret: { type: "string", required: true },
-    uri:    { type: "string", required: false },
-    scope:  { type: "array", required: false,
-        items: { type: "string", enum: ["possible", "scope", "values"] },
-    },
-    grants: { type: "array", required: false,
-        items: { type: "string", enum: ["authorization_code", "implicit", "password", "client_credentials"] }
-    }
-}
-```
-
 ___Redefinable functions___
 Look at "./lib/model/client.js" for further information.
 
 ### Code ###
 
 The authorization code is obtained by using an authorization server as an intermediary between the client and resource owner. User only by authorization code flow, no need to initialize it if one dont use this grant. *[Read more](http://tools.ietf.org/html/rfc6749#section-1.3.1)*
-
-___Model definition___
-
-Primary key: **code**
-Unique key: **userId** + **clientId** pair
-```js
-{
-    userId:   { type: "object", required: true },
-    clientId: { type: "object", required: true },
-    code:    { type: "string", required: true, unique: true },
-    scope:  { type: "array", required: false,
-        items: { type: "string", enum: ["possible", "scope", "values"] },
-    }
-}
-```
 
 ___Redefinable functions___
 Look at "./lib/model/code.js" for further information.
@@ -121,20 +61,15 @@ Look at "./lib/model/user.js" for further information.
 
 ### Step 2. Inject and Define Endpoints ###
 
-First of all include and initialize **oauth2-provider** library:
+First of all include and initialize **oauth20-provider** library:
 ```js
-oauth2 = require('./oauth2.js');
+oauth2lib = require('./oauth20-provider.js');
 oauth2 = new oauth2lib({log: {level: 2}});
 
-// We skip define models step here (read above or look at ./test/server/oauth2.js for information)
-```
-
-Inject oauth2 into your server
+Library is compatible with express/connect servers, inject oauth2 into your server.
 ```js
 server.use(oauth2.inject());
 ```
-
-Library is compatible with express/connect servers.
 
 ___Token endpoint___
 
@@ -170,7 +105,7 @@ Your authorizaton server is ready for work.
 
 ### ToDo list and future plans ###
 
-- Add examples (memory, redis, mongodb, sql)
+- Add examples (mongodb, postgresql)
 - Allow multiple flows for single client (only 1 per client works well yet)
 - Add refresh token TTL
 - Implement proper "state" support
