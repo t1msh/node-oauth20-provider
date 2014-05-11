@@ -78,7 +78,7 @@ ___Token endpoint___
 server.post('/token', oauth2.controller.token);
 ```
 
-___Authoirzation endpoint___
+___Authorization endpoint___
 
 ```js
 server.get('/authorization', isAuthorized, oauth2.controller.authorization, function(req, res) {
