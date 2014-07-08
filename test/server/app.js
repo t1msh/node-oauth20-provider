@@ -1,8 +1,11 @@
 var TYPE = 'memory'; // Pg, redis, mongodb also available for example
 
 var
-    query   = require('querystring'),
-    express = require('express');
+    query           = require('querystring'),
+    express         = require('express'),
+    cookieParser    = require('cookie-parser'),
+    session         = require('express-session'),
+    bodyParser      = require('body-parser');
 
 var
     config      = require('./config.js'),
@@ -11,10 +14,10 @@ var
     model       = require('./model/' + TYPE);
 
 // Middleware
-server.use(express.cookieParser());
-server.use(express.session({secret: 'oauth20-provider-test-server'}));
-server.use(express.urlencoded());
-server.use(express.json());
+server.use(cookieParser());
+server.use(session({ secret: 'oauth20-provider-test-server', resave: false, saveUninitialized: false }));
+server.use(bodyParser.urlencoded({extended: false}));
+server.use(bodyParser.json());
 server.use(oauth20.inject());
 
 // View

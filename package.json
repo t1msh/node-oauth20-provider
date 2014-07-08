@@ -25,6 +25,9 @@
     "devDependencies": {
         "mocha": "*",
         "express": "*",
+        "cookie-parser": "*",
+        "express-session": "*",
+        "body-parser": "*",
         "supertest": "*",
         "jade": "*"
     },
