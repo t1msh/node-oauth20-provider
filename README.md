@@ -99,10 +99,14 @@ server.post('/authorization', isAuthorized, oauth2.controller.authorization);
 Middleware **isAuthrorized** is used to check user login. If user is not logged in - show authorization form instead. Simple implementation:
 
 ```js
-function isAuthorized(req, res, next) {
-    if (req.session.authorized) return next();
-    res.redirect('/login?' + query.stringify({backUrl: req.url}));
-}
+function isUserAuthorized(req, res, next) {
+    if (req.session.authorized) next();    
+    else {
+        params = req.query;
+        params.backUrl = req.path;        
+        res.redirect('/login?' + query.stringify(params));
+    }         
+};
 ```
 
 ### Step 3. Relax ###
