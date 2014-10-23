@@ -27,7 +27,11 @@ server.set('view engine', 'jade');
 // Middleware. User authorization
 function isUserAuthorized(req, res, next) {
     if (req.session.authorized) next();
-    else res.redirect('/login?' + query.stringify({ backUrl: req.url }));
+    else {
+        var params = req.query;
+        params.backUrl = req.path;
+        res.redirect('/login?' + query.stringify(params));
+    }
 };
 
 // Define OAuth2 Authorization Endpoint
@@ -45,8 +49,10 @@ server.get('/login', function(req, res) {
 });
 
 server.post('/login', function(req, res, next) {
-    var backUrl = req.query.backUrl ? req.query.backUrl : '/',
-        loginUrl = '/login?' + query.stringify({backUrl: backUrl});
+    var backUrl = req.query.backUrl ? req.query.backUrl : '/';
+    delete(req.query.backUrl);
+    backUrl += backUrl.indexOf('?') > -1 ? '&' : '?';
+    backUrl += query.stringify(req.query);
 
     // Already logged in
     if (req.session.authorized) res.redirect(backUrl);
@@ -54,7 +60,7 @@ server.post('/login', function(req, res, next) {
     else if (req.body.username && req.body.password) {
         model.oauth2.user.fetchByUsername(req.body.username, function(err, user) {
             if (err) next(err);
-            else if (!user || !model.oauth2.user.checkPassword(user, req.body.password)) res.redirect(loginUrl);
+            else if (!user || !model.oauth2.user.checkPassword(user, req.body.password)) res.redirect(req.url);
             else {
                 req.session.user = user;
                 req.session.authorized = true;
@@ -63,7 +69,7 @@ server.post('/login', function(req, res, next) {
         });
     }
     // Please login
-    else res.redirect('/login?' + query.stringify({backUrl: backUrl}));
+    else res.redirect(req.url);
 });
 
 // Some secure method
@@ -91,4 +97,4 @@ module.exports = server;
 
 if (require.main == module) {
     start();
-};
+}
