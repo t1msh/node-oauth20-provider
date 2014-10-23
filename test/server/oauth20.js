@@ -4,7 +4,7 @@ var oauth20 = require('./../../lib');
 module.exports = function(type) {
     var obj = new oauth20({log: {level: 4}});
 
-    var model = require('./model')[type].oauth2;
+    var model = require('./model/' + type).oauth2;
     if (!model)
         throw new Error('Unknown model type: ' + type);
 
