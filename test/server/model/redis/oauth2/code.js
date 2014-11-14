@@ -20,6 +20,11 @@ module.exports.getScope = function(code) {
     return code.scope;
 };
 
+module.exports.checkTtl = function(code) {
+    // No need to check in redis storage because of key expiry mechanism
+    return true;
+};
+
 module.exports.save = function(code, userId, clientId, scope, ttl, cb) {
     var ttl = new Date().getTime() + ttl * 1000;
     var obj = {code: code, userId: userId, clientId: clientId, scope: scope};
@@ -42,4 +47,10 @@ module.exports.fetchByCode = function(code, cb) {
             }
         }
     });
+};
+
+module.exports.removeByCode = function(code, cb) {
+    redis.del(util.format(KEY.CODE, code), function(err) {
+        cb(err);
+    })
 };

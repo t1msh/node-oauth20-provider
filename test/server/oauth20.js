@@ -40,9 +40,11 @@ module.exports = function(type) {
     // Code
     obj.model.code.save = model.code.save;
     obj.model.code.fetchByCode = model.code.fetchByCode;
+    obj.model.code.removeByCode = model.code.removeByCode;
     obj.model.code.getUserId = model.code.getUserId;
     obj.model.code.getClientId = model.code.getClientId;
     obj.model.code.getScope = model.code.getScope;
+    obj.model.code.checkTTL = model.code.getScope;
 
     // Decision controller
     obj.decision = function(req, res, client, scope, user) {

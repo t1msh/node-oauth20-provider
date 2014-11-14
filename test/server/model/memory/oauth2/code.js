@@ -9,7 +9,7 @@ module.exports.save = function(code, userId, clientId, scope, ttl, cb) {
 module.exports.fetchByCode = function(code, cb) {
     for (var i in codes) {
         if (codes[i].code == code) return cb(null, codes[i]);
-    };
+    }
     cb();
 };
 
@@ -23,4 +23,18 @@ module.exports.getClientId = function(code) {
 
 module.exports.getScope = function(code) {
     return code.scope;
+};
+
+module.exports.checkTtl = function(code) {
+    return (code.ttl > new Date().getTime());
+};
+
+module.exports.removeByCode = function(code, cb) {
+    for (var i in codes) {
+        if (codes[i].code == code) {
+            codes.splice(i, 1);
+            break;
+        }
+    }
+    cb();
 };
