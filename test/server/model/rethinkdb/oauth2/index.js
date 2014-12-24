@@ -1,3 +1,6 @@
+/**
+ * Creates a wrapper around each service instance to name space it
+ */
 module.exports = {
     accessToken:    require('./accessToken.js'),
     client:         require('./client.js'),
