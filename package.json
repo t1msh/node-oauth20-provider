@@ -29,7 +29,8 @@
         "express-session": "*",
         "body-parser": "*",
         "supertest": "*",
-        "jade": "*"
+        "jade": "*",
+        "redis": "*"
     },
     "scripts": {
         "test": "node_modules/.bin/mocha --reporter spec"

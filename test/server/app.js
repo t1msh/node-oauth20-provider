@@ -33,7 +33,7 @@ function isUserAuthorized(req, res, next) {
         params.backUrl = req.path;
         res.redirect('/login?' + query.stringify(params));
     }
-};
+}
 
 // Define OAuth2 Authorization Endpoint
 server.get('/authorization', isUserAuthorized, oauth20.controller.authorization, function(req, res) {
