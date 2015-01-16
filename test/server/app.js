@@ -1,4 +1,5 @@
-var TYPE = 'memory'; // Pg, redis, mongodb also available for example
+// Run tests via "npm --type=TYPE test" (types available: memory (default), redis are available)
+var TYPE = process.env['npm_config_type'] || 'memory';
 
 var
     query           = require('querystring'),
