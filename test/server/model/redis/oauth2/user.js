@@ -40,8 +40,8 @@ module.exports.fetchByUsername = function(username, cb) {
     });
 };
 
-module.exports.checkPassword = function(user, password) {
-    return (user.password == password);
+module.exports.checkPassword = function(user, password, cb) {
+    (user.password == password) ? cb(null, true) : cb(null, false);
 };
 
 module.exports.fetchFromRequest = function(req) {
