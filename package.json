@@ -1,6 +1,6 @@
 {
     "name": "oauth20-provider",
-    "version": "0.3.5",
+    "version": "0.4.0",
     "description": "OAuth 2.0 provider toolkit for nodeJS",
     "keywords": ["oauth", "oauth2", "provider", "server", "connect", "express", "middleware", "http", "api", "rest"],
     "repository": {
