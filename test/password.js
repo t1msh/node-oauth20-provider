@@ -30,9 +30,12 @@ describe('Password Grant Type ',function() {
             .send({grant_type: 'refresh_token', refresh_token: refreshToken})
             .expect(200, /access_token/)
             .end(function(err, res) {
-                if (err) return done(err);
-                if (accessToken != res.body.access_token) return done(new Error('AccessToken strings do not match'));
-                done();
+                if (err)
+                    done(err);
+                else if (accessToken != res.body.access_token)
+                    done(new Error('AccessToken strings do not match. Expected=['+accessToken+'] Result=['+res.body.access_token+']'));
+                else
+                    done();
             });
     });
 
