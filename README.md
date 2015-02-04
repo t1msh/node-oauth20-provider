@@ -96,10 +96,10 @@ server.get('/authorization', isAuthorized, oauth2.controller.authorization, func
 server.post('/authorization', isAuthorized, oauth2.controller.authorization);
 ```
 
-Middleware **isAuthrorized** is used to check user login. If user is not logged in - show authorization form instead. Simple implementation:
+Middleware **isAuthorized** is used to check user login. If user is not logged in - show authorization form instead. Simple implementation:
 
 ```js
-function isUserAuthorized(req, res, next) {
+function isAuthorized(req, res, next) {
     if (req.session.authorized) next();
     else {
         var params = req.query;
@@ -111,7 +111,7 @@ function isUserAuthorized(req, res, next) {
 
 ### Step 3. Relax ###
 
-Your authorizaton server is ready for work.
+Your authorization server is ready for work.
 
 ---------------------------------------
 
