@@ -47,7 +47,7 @@ Look at "./lib/model/client.js" for further information.
 
 ### Code model ###
 
-The authorization code is obtained by using an authorization server as an intermediary between the client and resource owner. User only by authorization code flow, no need to initialize it if one dont use this grant. *[Read more](http://tools.ietf.org/html/rfc6749#section-1.3.1)*
+The authorization code is obtained by using an authorization server as an intermediary between the client and resource owner. User only by authorization code flow, no need to initialize it if one don't use this grant. *[Read more](http://tools.ietf.org/html/rfc6749#section-1.3.1)*
 
 ___Redefinable functions___
 Look at "./lib/model/code.js" for further information.
@@ -59,12 +59,12 @@ User is a registered person in the service. Model should contain unique identifi
 ___Redefinable functions___
 Look at "./lib/model/user.js" for further information.
 
-### Decision contoller ###
+### Decision controller ###
 
 Page is used to ask user whether user agree or not to allow client to access his information with current scope. Controller should return POST form with decision parameter (0 - user does not allow, 1 - user allows).
 
 ___Redefinable___
-Look at "./contoller/authorization/decision.js" for further information.
+Look at "./controller/authorization/decision.js" for further information.
 
 ### Step 2. Inject and Define Endpoints ###
 
