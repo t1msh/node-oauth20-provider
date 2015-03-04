@@ -7,3 +7,6 @@ npm-debug.log
 
 # Vagrant
 .vagrant
+
+# JetBrains IDEs
+.idea
