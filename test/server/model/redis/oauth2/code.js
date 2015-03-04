@@ -1,4 +1,5 @@
 var
+    crypto = require('crypto'),
     util = require('util'),
     redis = require('./../redis.js');
 
@@ -25,12 +26,13 @@ module.exports.checkTtl = function(code) {
     return true;
 };
 
-module.exports.save = function(code, userId, clientId, scope, ttl, cb) {
+module.exports.create = function(userId, clientId, scope, ttl, cb) {
+    var code = crypto.randomBytes(32).toString('hex');
     var ttl = new Date().getTime() + ttl * 1000;
     var obj = {code: code, userId: userId, clientId: clientId, scope: scope};
     redis.setex(util.format(KEY.CODE, code), ttl, JSON.stringify(obj), function(err) {
         if (err) cb(err);
-        else cb(null, obj);
+        else cb(null, code);
     });
 };
 

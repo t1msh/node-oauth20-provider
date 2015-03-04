@@ -1,14 +1,18 @@
-var RethinkDb = require('rethinkdb'),
+var crypto = require('crypto'),
+    RethinkDb = require('rethinkdb'),
     connection = require('./../connection.js');
 
 var TABLE = 'authorization_code';
 
-module.exports.save = function(code, userId, clientId, scope, ttl, cb) {
+module.exports.create = function(userId, clientId, scope, ttl, cb) {
+    var code = crypto.randomBytes(32).toString('hex');
     var obj = {code: code, userId: userId, clientId: clientId, scope: scope, ttl: new Date().getTime() + ttl * 1000};
 
     connection.acquire(function(err, conn) {
         if (err) cb(err);
-        else RethinkDb.table(TABLE).insert(obj, {}).run(conn, cb);
+        else RethinkDb.table(TABLE).insert(obj, {}).run(conn, function(err) {
+            cb(err, code);
+        });
     });
 };
 

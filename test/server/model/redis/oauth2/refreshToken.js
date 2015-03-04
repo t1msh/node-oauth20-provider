@@ -1,4 +1,5 @@
 var
+    crypto = require('crypto'),
     util = require('util'),
     redis = require('./../redis.js');
 
@@ -12,11 +13,12 @@ module.exports.getUserId = function(refreshToken) {
     return refreshToken.userId;
 };
 
-module.exports.save = function(token, userId, clientId, scope, cb) {
+module.exports.create = function(userId, clientId, scope, cb) {
+    var token = crypto.randomBytes(64).toString('hex');
     var obj = {token: token, userId: userId, clientId: clientId, scope: scope};
     redis.set(util.format(KEY.TOKEN, token), JSON.stringify(obj), function(err) {
         if (err) cb(err);
-        else cb(null, obj);
+        else cb(null, token);
     });
 };
 

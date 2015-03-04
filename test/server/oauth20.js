@@ -28,17 +28,17 @@ module.exports = function(type) {
     obj.model.refreshToken.getClientId = model.refreshToken.getUserId;
     obj.model.refreshToken.fetchByToken = model.refreshToken.fetchByToken;
     obj.model.refreshToken.removeByUserIdClientId = model.refreshToken.removeByUserIdClientId;
-    obj.model.refreshToken.save = model.refreshToken.save;
+    obj.model.refreshToken.create = model.refreshToken.create;
 
     // Access token
     obj.model.accessToken.getToken = model.accessToken.getToken;
     obj.model.accessToken.fetchByToken = model.accessToken.fetchByToken;
     obj.model.accessToken.checkTTL = model.accessToken.checkTTL;
     obj.model.accessToken.fetchByUserIdClientId = model.accessToken.fetchByUserIdClientId;
-    obj.model.accessToken.save = model.accessToken.save;
+    obj.model.accessToken.create = model.accessToken.create;
 
     // Code
-    obj.model.code.save = model.code.save;
+    obj.model.code.create = model.code.create;
     obj.model.code.fetchByCode = model.code.fetchByCode;
     obj.model.code.removeByCode = model.code.removeByCode;
     obj.model.code.getUserId = model.code.getUserId;

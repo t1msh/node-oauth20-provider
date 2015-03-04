@@ -1,4 +1,5 @@
 var
+    crypto = require('crypto'),
     util = require('util'),
     redis = require('./../redis.js');
 
@@ -14,10 +15,14 @@ module.exports.getToken = function(accessToken) {
     return accessToken.token;
 };
 
-module.exports.save = function(token, userId, clientId, scope, ttl, cb) {
+module.exports.create = function(userId, clientId, scope, ttl, cb) {
+    var token = crypto.randomBytes(64).toString('hex');
     var ttl = new Date().getTime() + ttl * 1000;
     var obj = {token: token, userId: userId, clientId: clientId, scope: scope};
-    redis.setex(util.format(KEY.ACCESS_TOKEN, token), ttl, JSON.stringify(obj), cb);
+    redis.setex(util.format(KEY.ACCESS_TOKEN, token), ttl, JSON.stringify(obj), function(err, data) {
+        if (err) cb(err);
+        else cb(null, token);
+    });
     redis.setex(util.format(KEY.USER_CLIENT_TOKEN, userId, clientId), ttl, token, function() {});
 };
 

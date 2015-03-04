@@ -1,4 +1,5 @@
-var RethinkDb = require('rethinkdb'),
+var crypto = require('crypto'),
+    RethinkDb = require('rethinkdb'),
     connection = require('./../connection.js');
 
 var TABLE = 'access_token';
@@ -7,11 +8,14 @@ module.exports.getToken = function(accessToken) {
     return accessToken.token;
 };
 
-module.exports.save = function(token, userId, clientId, scope, ttl, cb) {
+module.exports.create = function(userId, clientId, scope, ttl, cb) {
+    var token = crypto.randomBytes(64).toString('hex');
     var obj = {token: token, userId: userId, clientId: clientId, scope: scope, ttl: new Date().getTime() + ttl * 1000};
     connection.acquire(function(err, conn) {
         if (err) cb(err);
-        else RethinkDb.table(TABLE).insert(obj, {}).run(conn, cb);
+        else RethinkDb.table(TABLE).insert(obj, {}).run(conn, function(err) {
+            cb(err, token);
+        });
     });
 };
 

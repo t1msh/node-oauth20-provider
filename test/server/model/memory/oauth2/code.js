@@ -1,9 +1,11 @@
-var codes = require('./../../data.js').codes;
+var crypto = require('crypto'),
+    codes = require('./../../data.js').codes;
 
-module.exports.save = function(code, userId, clientId, scope, ttl, cb) {
+module.exports.create = function(userId, clientId, scope, ttl, cb) {
+    var code = crypto.randomBytes(32).toString('hex');
     var obj = {code: code, userId: userId, clientId: clientId, scope: scope, ttl: new Date().getTime() + ttl * 1000};
     codes.push(obj);
-    cb(null, obj);
+    cb(null, code);
 };
 
 module.exports.fetchByCode = function(code, cb) {
