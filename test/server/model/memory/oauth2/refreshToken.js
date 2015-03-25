@@ -5,6 +5,10 @@ module.exports.getUserId = function(refreshToken) {
     return refreshToken.userId;
 };
 
+module.exports.getClientId = function(refreshToken) {
+    return refreshToken.clientId;
+};
+
 module.exports.fetchByToken = function(token, cb) {
     for (var i in refreshTokens) {
         if (refreshTokens[i].token == token) return cb(null, refreshTokens[i]);

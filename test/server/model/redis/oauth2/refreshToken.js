@@ -13,6 +13,10 @@ module.exports.getUserId = function(refreshToken) {
     return refreshToken.userId;
 };
 
+module.exports.getClientId = function(refreshToken) {
+    return refreshToken.clientId;
+};
+
 module.exports.create = function(userId, clientId, scope, cb) {
     var token = crypto.randomBytes(64).toString('hex');
     var obj = {token: token, userId: userId, clientId: clientId, scope: scope};

@@ -25,7 +25,7 @@ module.exports = function(type) {
 
     // Refresh token
     obj.model.refreshToken.getUserId = model.refreshToken.getUserId;
-    obj.model.refreshToken.getClientId = model.refreshToken.getUserId;
+    obj.model.refreshToken.getClientId = model.refreshToken.getClientId;
     obj.model.refreshToken.fetchByToken = model.refreshToken.fetchByToken;
     obj.model.refreshToken.removeByUserIdClientId = model.refreshToken.removeByUserIdClientId;
     obj.model.refreshToken.create = model.refreshToken.create;
