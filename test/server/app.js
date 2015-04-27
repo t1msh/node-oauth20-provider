@@ -14,6 +14,8 @@ var
     oauth20     = require('./oauth20.js')(TYPE),
     model       = require('./model/' + TYPE);
 
+server.set('oauth2', oauth20);
+
 // Middleware
 server.use(cookieParser());
 server.use(session({ secret: 'oauth20-provider-test-server', resave: false, saveUninitialized: false }));

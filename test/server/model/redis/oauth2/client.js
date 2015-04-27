@@ -32,6 +32,6 @@ module.exports.fetchById = function(clientId, cb) {
 };
 
 // Add some hashing algorithm for security
-module.exports.checkSecret = function(client, secret) {
-    return (client.secret == secret);
+module.exports.checkSecret = function(client, secret, cb) {
+    return cb(null, client.secret == secret);
 };

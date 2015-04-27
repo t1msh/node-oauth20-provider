@@ -15,6 +15,6 @@ module.exports.fetchById = function(clientId, cb) {
     cb();
 };
 
-module.exports.checkSecret = function(client, secret) {
-    return (client.secret == secret);
+module.exports.checkSecret = function(client, secret,cb) {
+    return cb(null, client.secret == secret);
 };
