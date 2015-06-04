@@ -17,6 +17,10 @@ module.exports.getClientId = function(refreshToken) {
     return refreshToken.clientId;
 };
 
+module.exports.getScope = function(refreshToken) {
+    return refreshToken.scope;
+};
+
 module.exports.create = function(userId, clientId, scope, cb) {
     var token = crypto.randomBytes(64).toString('hex');
     var obj = {token: token, userId: userId, clientId: clientId, scope: scope};

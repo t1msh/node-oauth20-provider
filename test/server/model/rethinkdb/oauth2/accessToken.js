@@ -35,6 +35,11 @@ module.exports.checkTTL = function(accessToken) {
     return (accessToken.ttl > new Date().getTime());
 };
 
+module.exports.getTTL = function(accessToken, cb) {
+    var ttl = moment(accessToken.ttl).diff(new Date(),'seconds');
+    return cb(null, ttl>0?ttl:0);
+};
+
 module.exports.fetchByUserIdClientId = function(userId, clientId, cb) {
     var where = RethinkDb.and(
         RethinkDb.row('userId').eq(userId),

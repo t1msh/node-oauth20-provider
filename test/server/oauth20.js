@@ -26,6 +26,7 @@ module.exports = function(type) {
     // Refresh token
     obj.model.refreshToken.getUserId = model.refreshToken.getUserId;
     obj.model.refreshToken.getClientId = model.refreshToken.getClientId;
+    obj.model.refreshToken.getScope = model.refreshToken.getScope;
     obj.model.refreshToken.fetchByToken = model.refreshToken.fetchByToken;
     obj.model.refreshToken.removeByUserIdClientId = model.refreshToken.removeByUserIdClientId;
     obj.model.refreshToken.create = model.refreshToken.create;
@@ -34,6 +35,7 @@ module.exports = function(type) {
     obj.model.accessToken.getToken = model.accessToken.getToken;
     obj.model.accessToken.fetchByToken = model.accessToken.fetchByToken;
     obj.model.accessToken.checkTTL = model.accessToken.checkTTL;
+    obj.model.accessToken.getTTL = model.accessToken.getTTL;
     obj.model.accessToken.fetchByUserIdClientId = model.accessToken.fetchByUserIdClientId;
     obj.model.accessToken.create = model.accessToken.create;
 
