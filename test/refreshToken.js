@@ -50,7 +50,7 @@ describe('Refresh Token Grant Type ',function() {
             });
     });
 
-    it('POST /token with grant_type="refresh_token" expect diferent accessToken', function(done) {
+    it('Wait and POST /token with grant_type="refresh_token" expect diferent [new]accessToken', function(done) {
         setTimeout(function() {
             request(app)
                 .post('/token')

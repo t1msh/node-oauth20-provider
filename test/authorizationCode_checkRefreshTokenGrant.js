@@ -4,7 +4,7 @@ var
     data = require('./server/model/data.js'),
     app = require('./server/app.js');
 
-describe('Authorization Code Grant Type ',function() {
+describe('Authorization Code Grant Type without client\'s refresh token grant type',function() {
 
     before(function() {
         app.get('oauth2').model.client.checkGrantType = function(client, grant){
