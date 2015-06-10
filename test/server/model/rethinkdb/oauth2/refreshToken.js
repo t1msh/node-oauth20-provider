@@ -12,6 +12,10 @@ module.exports.getClientId = function(refreshToken) {
     return refreshToken.clientId;
 };
 
+module.exports.getScope = function(refreshToken) {
+    return refreshToken.scope;
+};
+
 module.exports.fetchByToken = function(token, cb) {
     connection.acquire(function(err, conn) {
         if (err) cb(err);

@@ -19,6 +19,12 @@ module.exports = {
             name:           'client2.name',
             secret:         'client2.Secret',
             redirectUri:    'http://example.org/oauth2'
+        },
+        {
+            id:             'client3.id',
+            name:           'client3.name',
+            secret:         'client3.Secret',
+            redirectUri:    'http://example.org/oauth3'
         }
     ],
     codes: [],

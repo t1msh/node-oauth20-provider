@@ -9,6 +9,10 @@ module.exports.getClientId = function(refreshToken) {
     return refreshToken.clientId;
 };
 
+module.exports.getScope = function(refreshToken) {
+    return refreshToken.scope;
+};
+
 module.exports.fetchByToken = function(token, cb) {
     for (var i in refreshTokens) {
         if (refreshTokens[i].token == token) return cb(null, refreshTokens[i]);

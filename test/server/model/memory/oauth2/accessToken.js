@@ -1,5 +1,6 @@
 var crypto = require('crypto'),
-    accessTokens = require('./../../data.js').accessTokens;
+    accessTokens = require('./../../data.js').accessTokens,
+    moment = require('moment');
 
 module.exports.getToken = function(accessToken) {
     return accessToken.token;
@@ -21,6 +22,11 @@ module.exports.fetchByToken = function(token, cb) {
 
 module.exports.checkTTL = function(accessToken) {
     return (accessToken.ttl > new Date().getTime());
+};
+
+module.exports.getTTL = function(accessToken, cb) {
+    var ttl = moment(accessToken.ttl).diff(new Date(),'seconds');
+    return cb(null, ttl>0?ttl:0);
 };
 
 module.exports.fetchByUserIdClientId = function(userId, clientId, cb) {

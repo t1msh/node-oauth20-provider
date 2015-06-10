@@ -48,10 +48,13 @@ module.exports.checkTTL = function(accessToken) {
     return true;
 };
 
+module.exports.getTTL = function(accessToken, cb) {
+    regis.ttl(util.format(KEY.ACCESS_TOKEN, token), cb);
+};
+
 module.exports.fetchByUserIdClientId = function(userId, clientId, cb) {
     redis.get(util.format(KEY.USER_CLIENT_TOKEN, userId, clientId), function(err, token) {
         if (err) cb(err);
         else fetchByToken(token, cb);
     });
 };
-

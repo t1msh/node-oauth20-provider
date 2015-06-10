@@ -1,39 +1,55 @@
 {
-    "name": "oauth20-provider",
-    "version": "0.6.0",
-    "description": "OAuth 2.0 provider toolkit for nodeJS",
-    "keywords": ["oauth", "oauth2", "provider", "server", "connect", "express", "middleware", "http", "api", "rest"],
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/t1msh/node-oauth20-provider.git"
-    },
-    "bugs": {
-        "url": "https://github.com/t1msh/node-oauth20-provider/issues"
-    },
-    "author": {
-        "name": "Tim",
-        "email": "tim.shamilov@gmail.com"
-    },
-    "licenses": [ {
-        "type": "MIT",
-        "url": "http://www.opensource.org/licenses/MIT"
-    } ],
-    "main": "./lib",
-    "dependencies": {
-        "async": "*"
-    },
-    "devDependencies": {
-        "mocha": "*",
-        "express": "*",
-        "cookie-parser": "*",
-        "express-session": "*",
-        "body-parser": "*",
-        "supertest": "*",
-        "jade": "*",
-        "redis": "*"
-    },
-    "scripts": {
-        "test": "node_modules/.bin/mocha --reporter spec"
-    },
-    "engines": { "node": ">= 0.10.0" }
+  "name": "oauth20-provider",
+  "version": "0.6.0",
+  "description": "OAuth 2.0 provider toolkit for nodeJS",
+  "keywords": [
+    "oauth",
+    "oauth2",
+    "provider",
+    "server",
+    "connect",
+    "express",
+    "middleware",
+    "http",
+    "api",
+    "rest"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/t1msh/node-oauth20-provider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/t1msh/node-oauth20-provider/issues"
+  },
+  "author": {
+    "name": "Tim",
+    "email": "tim.shamilov@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "./lib",
+  "dependencies": {
+    "async": "*"
+  },
+  "devDependencies": {
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-session": "*",
+    "jade": "*",
+    "mocha": "*",
+    "moment": "^2.10.3",
+    "redis": "*",
+    "supertest": "*"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter spec"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  }
 }
