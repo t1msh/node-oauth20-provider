@@ -17,7 +17,6 @@ module.exports.getToken = function(accessToken) {
 
 module.exports.create = function(userId, clientId, scope, ttl, cb) {
     var token = crypto.randomBytes(64).toString('hex');
-    var ttl = new Date().getTime() + ttl * 1000;
     var obj = {token: token, userId: userId, clientId: clientId, scope: scope};
     redis.setex(util.format(KEY.ACCESS_TOKEN, token), ttl, JSON.stringify(obj), function(err, data) {
         if (err) cb(err);
@@ -49,7 +48,7 @@ module.exports.checkTTL = function(accessToken) {
 };
 
 module.exports.getTTL = function(accessToken, cb) {
-    regis.ttl(util.format(KEY.ACCESS_TOKEN, token), cb);
+    redis.ttl(util.format(KEY.ACCESS_TOKEN, token), cb);
 };
 
 module.exports.fetchByUserIdClientId = function(userId, clientId, cb) {
