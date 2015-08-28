@@ -50,3 +50,8 @@ module.exports.removeByUserIdClientId = function(userId, clientId, cb) {
     cb();
 };
 
+module.exports.removeByRefreshToken = function(refreshToken, cb) {
+    redis.del(util.format(KEY.TOKEN, refreshToken), function(err) {
+        cb(err);
+    });
+};

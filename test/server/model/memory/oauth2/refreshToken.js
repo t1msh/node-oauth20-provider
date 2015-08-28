@@ -28,6 +28,14 @@ module.exports.removeByUserIdClientId = function(userId, clientId, cb) {
     cb();
 };
 
+module.exports.removeByRefreshToken = function(refreshToken, cb) {
+    for (var i in refreshTokens) {
+        if (refreshTokens[i].token == refreshToken)
+            refreshTokens.splice(i, 1);
+    }
+    cb();
+};
+
 module.exports.create = function(userId, clientId, scope, cb) {
     var token = crypto.randomBytes(64).toString('hex');
     var obj = {token: token, userId: userId, clientId: clientId, scope: scope};

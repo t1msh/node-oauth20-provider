@@ -29,6 +29,7 @@ module.exports = function(type) {
     obj.model.refreshToken.getScope = model.refreshToken.getScope;
     obj.model.refreshToken.fetchByToken = model.refreshToken.fetchByToken;
     obj.model.refreshToken.removeByUserIdClientId = model.refreshToken.removeByUserIdClientId;
+    obj.model.refreshToken.removeByRefreshToken = model.refreshToken.removeByRefreshToken;
     obj.model.refreshToken.create = model.refreshToken.create;
 
     // Access token

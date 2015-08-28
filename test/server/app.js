@@ -14,6 +14,9 @@ var
     oauth20     = require('./oauth20.js')(TYPE),
     model       = require('./model/' + TYPE);
 
+// Configuration for renewing refresh token in refresh token flow
+oauth20.renewRefreshToken = true;
+
 server.set('oauth2', oauth20);
 
 // Middleware
