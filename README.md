@@ -65,7 +65,7 @@ Look at ["./lib/model/user.js"](./lib/model/user.js) for further information.
 Page is used to ask user whether user agree or not to allow client to access his information with current scope. Controller should return POST form with decision parameter (0 - user does not allow, 1 - user allows).
 
 ___Redefinable___
-Look at ["./controller/authorization/decision.js"](./controller/authorization/decision.js) for further information.
+Look at ["./lib/controller/authorization/decision.js"](./lib/controller/authorization/decision.js) for further information.
 
 ### Step 2. Inject and Define Endpoints ###
 
