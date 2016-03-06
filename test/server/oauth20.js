@@ -13,6 +13,7 @@ module.exports = function(type) {
     // Set client methods
     obj.model.client.getId = model.client.getId;
     obj.model.client.getRedirectUri = model.client.getRedirectUri;
+    obj.model.client.checkRedirectUri = model.client.checkRedirectUri;
     obj.model.client.fetchById = model.client.fetchById;
     obj.model.client.checkSecret = model.client.checkSecret;
 

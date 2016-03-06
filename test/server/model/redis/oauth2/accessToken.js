@@ -47,7 +47,7 @@ module.exports.checkTTL = function(accessToken) {
     return true;
 };
 
-module.exports.getTTL = function(accessToken, cb) {
+module.exports.getTTL = function(token, cb) {
     redis.ttl(util.format(KEY.ACCESS_TOKEN, token), cb);
 };
 
