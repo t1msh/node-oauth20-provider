@@ -85,14 +85,14 @@ server.post('/login', function(req, res, next) {
 
 // Some secure method
 server.get('/secure', oauth20.middleware.bearer, function(req, res) {
-    if (!req.oauth2.accessToken) return res.status(403).send('Forbidden');
-    if (!req.oauth2.accessToken.userId) return res.status(403).send('Forbidden');
+    if (!req.oauth2.accessToken) return res.status(401).send('Not Authorized');
+    if (!req.oauth2.accessToken.userId) return res.status(401).send('Not Authorized');
     res.send('Hi! Dear user ' + req.oauth2.accessToken.userId + '!');
 });
 
 // Some secure client method
 server.get('/client', oauth20.middleware.bearer, function(req, res) {
-    if (!req.oauth2.accessToken) return res.status(403).send('Forbidden');
+    if (!req.oauth2.accessToken) return res.status(401).send('Not Authorized');
     res.send('Hi! Dear client ' + req.oauth2.accessToken.clientId + '!');
 });
 

@@ -21,11 +21,11 @@ describe('Client Credentials Grant Type ',function() {
             });
     });
 
-    it('POST /secure expect forbidden', function(done) {
+    it('POST /secure expect not authorized', function(done) {
         request(app)
             .get('/secure')
             .set('Authorization', 'Bearer ' + accessToken)
-            .expect(403, done);
+            .expect(401, done);
     });
 
     it('POST /client expect authorized', function(done) {

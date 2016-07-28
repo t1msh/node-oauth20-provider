@@ -70,14 +70,14 @@ describe('Refresh Token Grant Type ',function() {
         },2000);
     });
 
-    it('POST /secure with old token expect forbidden', function(done) {
+    it('POST /secure with old token expect not authorized', function(done) {
         request(app)
             .get('/secure')
             .set('Authorization', 'Bearer ' + accessToken)
-            .expect(403, /forbidden/, done);
+            .expect(401, /not_authorized/, done);
     });
 
-    it('POST /secure witj new token expect authorized', function(done) {
+    it('POST /secure with new token expect authorized', function(done) {
         request(app)
             .get('/secure')
             .set('Authorization', 'Bearer ' + newAccessToken)
