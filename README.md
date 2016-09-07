@@ -12,7 +12,7 @@ ___One more oAuth 2.0 service provider? Yes!___
 
 ## Installation ##
 
-    $ npm install oauth20-provider
+    $ npm install envato/oauth20-provider
 
 ---------------------------------------
 
