@@ -1,6 +1,8 @@
 node-oauth20-provider
 ==================
 
+This is the fork of t1msh/node-oauth20-provider to continue the development and bug fixes for this module because the original module has been inactive for long time.
+
 OAuth 2.0 provider toolkit for nodeJS with connect/express support. Supports all the four authorization flows: authorization code, implicit, client credentials, password.
 
 ___One more oAuth 2.0 service provider? Yes!___
@@ -130,6 +132,7 @@ Your authorization server is ready for work.
 
 ### License ###
 
+Copyright (c) 2016 Envato
 Copyright (c) 2013 Tim Shamilov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
