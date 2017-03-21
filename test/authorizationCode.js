@@ -57,7 +57,11 @@ describe('Authorization Code Grant Type ',function() {
         invalid_client_id = 123
 
         request(app)
-            .get(authorizationUrl + '?' + query.stringify({client_id: invalid_client_id}))
+            .get(authorizationUrl + '?' + query.stringify({
+                redirect_uri: data.clients[1].redirectUri,
+                client_id: invalid_client_id,
+                response_type: 'code'
+            }))
             .set('Cookie', cookie)
             .expect(400, function(err, res) {
                 if (err) return done(err);
