@@ -53,6 +53,18 @@ describe('Authorization Code Grant Type ',function() {
             });
     });
 
+    it('GET /authorize with invalid params expect error', function(done) {
+        invalid_client_id = 123
+
+        request(app)
+            .get(authorizationUrl + '?' + query.stringify({client_id: invalid_client_id}))
+            .set('Cookie', cookie)
+            .expect(400, function(err, res) {
+                if (err) return done(err);
+                done();
+            });
+    });
+
     it('POST /authorize with response_type="code" and decision="1" expect code redirect', function(done) {
         request(app)
             .post(authorizationUrl)
