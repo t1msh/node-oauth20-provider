@@ -53,6 +53,22 @@ describe('Authorization Code Grant Type ',function() {
             });
     });
 
+    it('GET /authorize with invalid params expect error', function(done) {
+        invalid_client_id = 123
+
+        request(app)
+            .get(authorizationUrl + '?' + query.stringify({
+                redirect_uri: data.clients[1].redirectUri,
+                client_id: invalid_client_id,
+                response_type: 'code'
+            }))
+            .set('Cookie', cookie)
+            .expect(400, function(err, res) {
+                if (err) return done(err);
+                done();
+            });
+    });
+
     it('POST /authorize with response_type="code" and decision="1" expect code redirect', function(done) {
         request(app)
             .post(authorizationUrl)
@@ -70,6 +86,23 @@ describe('Authorization Code Grant Type ',function() {
                 done();
             })
     });
+
+    it('POST /authorize with invalid params expect to return 400 error', function(done) {
+        invalid_client_id = 123
+        request(app)
+            .post(authorizationUrl + '?' + query.stringify({
+                redirect_uri: data.clients[1].redirectUri,
+                client_id: invalid_client_id,
+                response_type: 'code'
+            }))
+            .send({ decision: 1 })
+            .set('Cookie', cookie)
+            .expect(400, function(err, res) {
+                if (err) return done(err);
+                done();
+            })
+    });
+
 
     it('POST /token with grant_type="authorization_code" expect token', function(done) {
         request(app)
